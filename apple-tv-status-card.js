@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c APPLE-TV-STATUS-CARD %c v1.0.1 `,
+  `%c APPLE-TV-STATUS-CARD %c v1.0.2 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -44,6 +44,10 @@ class AppleTvStatusCard extends LitElement {
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .wrapper.overlay-mode {
+      mix-blend-mode: overlay;
     }
 
     .wrapper:hover {
@@ -105,6 +109,7 @@ class AppleTvStatusCard extends LitElement {
     this.config = {
       name: 'Apple TV',
       type: 'apple_tv',
+      use_overlay: false,
       ...config
     };
   }
@@ -197,9 +202,10 @@ class AppleTvStatusCard extends LitElement {
     }
 
     const statusText = this._getStatusText(entity);
+    const overlayClass = this.config.use_overlay ? 'overlay-mode' : '';
 
     return html`
-      <div class="wrapper" @click=${this._handleClick}>
+      <div class="wrapper ${overlayClass}" @click=${this._handleClick}>
         <div class="title">
           <div class="title-text">${this.config.name}</div>
           <div class="icon">

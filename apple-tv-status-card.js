@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c APPLE-TV-STATUS-CARD %c v1.0.2 `,
+  `%c APPLE-TV-STATUS-CARD %c v1.0.3 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -48,6 +48,12 @@ class AppleTvStatusCard extends LitElement {
 
     .wrapper.overlay-mode {
       mix-blend-mode: overlay;
+      transition: none;
+    }
+
+    .wrapper.overlay-mode:hover {
+      transform: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 
     .wrapper:hover {

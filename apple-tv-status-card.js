@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c APPLE-TV-STATUS-CARD %c v1.0.0 `,
+  `%c APPLE-TV-STATUS-CARD %c v1.0.1 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -21,10 +21,10 @@ class AppleTvStatusCard extends LitElement {
 
     :host {
       font-family: 'Karla', sans-serif;
-      --card-bg: #918F8F;
-      --text-color: #2B2B2B;
-      --text-color-secondary: rgba(43, 43, 43, 0.82);
-      --border-color: #BDBDBD;
+      --card-bg: var(--ha-card-background, #4a4a4a);
+      --text-color: var(--primary-text-color, #e0e0e0);
+      --text-color-secondary: var(--secondary-text-color, rgba(255, 255, 255, 0.7));
+      --border-color: var(--divider-color, #555);
     }
 
     .wrapper {
@@ -32,7 +32,6 @@ class AppleTvStatusCard extends LitElement {
       height: 62px;
       padding: 10px 19px;
       background: var(--card-bg);
-      mix-blend-mode: overlay;
       overflow: hidden;
       border-radius: 16px;
       outline: 1px var(--border-color) solid;
@@ -44,6 +43,7 @@ class AppleTvStatusCard extends LitElement {
       gap: 0px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 
     .wrapper:hover {
